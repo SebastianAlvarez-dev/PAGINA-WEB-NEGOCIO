@@ -82,6 +82,8 @@ El workflow `.github/workflows/ci-cd.yaml` compila y prueba cada proyecto en pul
 
 Consulta [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) para realizar la configuración inicial de Google Cloud, GitHub y Supabase. La arquitectura interna está documentada en [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
+El historial de decisiones y avances se mantiene en [docs/PROJECT_LOG.md](docs/PROJECT_LOG.md).
+
 ## Verificación
 
 ```powershell

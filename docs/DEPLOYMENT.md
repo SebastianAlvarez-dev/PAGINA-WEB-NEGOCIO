@@ -9,10 +9,20 @@ El pipeline crea dos imágenes y dos servicios de Cloud Run:
 
 ## 1. Preparar Google Cloud
 
-Selecciona tu proyecto y habilita los servicios necesarios:
+El proyecto exclusivo de producción para este sistema es:
+
+| Dato | Valor |
+| --- | --- |
+| Nombre | `Faraluna Bisutería` |
+| ID del proyecto | `faraluna-bisuteria` |
+| Región inicial | `us-central1` |
+
+No se debe desplegar en el proyecto universitario `Landing Page`.
+
+Selecciona el proyecto de Faraluna y habilita los servicios necesarios:
 
 ```bash
-gcloud config set project TU_PROJECT_ID
+gcloud config set project faraluna-bisuteria
 gcloud services enable run.googleapis.com artifactregistry.googleapis.com secretmanager.googleapis.com iamcredentials.googleapis.com sts.googleapis.com
 gcloud artifacts repositories create jewelry-store --repository-format=docker --location=us-central1
 ```
@@ -45,7 +55,7 @@ En **Settings > Secrets and variables > Actions > Variables**, agrega:
 
 | Variable | Ejemplo |
 | --- | --- |
-| `GCP_PROJECT_ID` | `mi-proyecto-123` |
+| `GCP_PROJECT_ID` | `faraluna-bisuteria` |
 | `GCP_WORKLOAD_IDENTITY_PROVIDER` | `projects/123456789/locations/global/workloadIdentityPools/github/providers/faraluna` |
 | `GCP_SERVICE_ACCOUNT` | `github-deployer@mi-proyecto-123.iam.gserviceaccount.com` |
 | `SUPABASE_URL` | `https://PROJECT_REF.supabase.co` |
