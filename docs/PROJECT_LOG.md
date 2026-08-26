@@ -26,7 +26,8 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se creó un proyecto exclusivo llamado `Faraluna Bisutería`.
 - ID confirmado del proyecto: `faraluna-bisuteria`.
 - Cloud Shell quedó abierto con el proyecto correcto seleccionado.
-- Próximo paso: habilitar las APIs requeridas de Google Cloud.
+- Se habilitaron correctamente las APIs de Cloud Run, Artifact Registry, Secret Manager, IAM Credentials y Security Token Service.
+- Próximo paso: crear el repositorio Docker `jewelry-store` en Artifact Registry.
 
 ## Estado actual
 
