@@ -35,7 +35,8 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se concedió a `github-deployer` el rol `roles/artifactregistry.writer`, limitado al repositorio `jewelry-store`.
 - Se concedió a `github-deployer` el rol `roles/iam.serviceAccountUser` sobre `faraluna-runtime`.
 - Se creó el pool global de Workload Identity Federation `github` para autenticar GitHub Actions sin llaves JSON.
-- Próximo paso: crear un proveedor OIDC restringido al repositorio de Faraluna y a la rama `main`.
+- Se creó el proveedor OIDC `faraluna-github`, configurado para restringir la confianza al repositorio de Faraluna y a la rama `main`.
+- Próximo paso: verificar los atributos y la condición de seguridad del proveedor antes de autorizar la suplantación de `github-deployer`.
 
 ## Estado actual
 
