@@ -57,7 +57,8 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se creó `faraluna-supabase-secret` en Google Secret Manager con una versión habilitada.
 - Se verificó sin imprimir su contenido que el valor almacenado tiene el formato `sb_secret_...` esperado.
 - Se concedió a `faraluna-runtime` el rol `roles/secretmanager.secretAccessor`, limitado a `faraluna-supabase-secret`.
-- Próximo paso: obtener la conexión Session pooler de PostgreSQL y guardarla en Secret Manager.
+- Se confirmó la conexión Session pooler: `aws-0-us-east-1.pooler.supabase.com:5432`, base `postgres`, usuario `postgres.ptvnlzvskbphglqamips`.
+- Próximo paso: construir la cadena Npgsql sin exponer la contraseña y guardarla como `faraluna-db-connection`.
 
 ## Estado actual
 

@@ -80,6 +80,17 @@ La clave publicable de Supabase no concede privilegios administrativos, aunque e
 
 El proyecto de Supabase se llama `faraluna-bisuteria-db`, su referencia pública es `ptvnlzvskbphglqamips` y está alojado en `us-east-1`.
 
+La conexión PostgreSQL utiliza el Shared pooler en modo sesión:
+
+| Parámetro | Valor |
+| --- | --- |
+| Host | `aws-0-us-east-1.pooler.supabase.com` |
+| Puerto | `5432` |
+| Base de datos | `postgres` |
+| Usuario | `postgres.ptvnlzvskbphglqamips` |
+
+La contraseña no se documenta. La cadena Npgsql completa se guarda en Google Secret Manager como `faraluna-db-connection`.
+
 ## 4. Ejecutar el pipeline
 
 Todo pull request y push hacia `main` ejecuta CI. El CD solo se ejecuta cuando `DEPLOY_ENABLED` tiene exactamente el valor `true`. Debe permanecer en `false` hasta completar Google Cloud, Supabase y Secret Manager. También puedes iniciar el workflow manualmente desde **Actions > CI/CD > Run workflow**.
