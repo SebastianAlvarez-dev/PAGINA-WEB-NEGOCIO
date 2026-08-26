@@ -34,7 +34,8 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se concedió a `github-deployer` el rol `roles/run.admin` para administrar los despliegues de Cloud Run.
 - Se concedió a `github-deployer` el rol `roles/artifactregistry.writer`, limitado al repositorio `jewelry-store`.
 - Se concedió a `github-deployer` el rol `roles/iam.serviceAccountUser` sobre `faraluna-runtime`.
-- Próximo paso: crear el pool de Workload Identity Federation para autenticar GitHub Actions sin llaves JSON.
+- Se creó el pool global de Workload Identity Federation `github` para autenticar GitHub Actions sin llaves JSON.
+- Próximo paso: crear un proveedor OIDC restringido al repositorio de Faraluna y a la rama `main`.
 
 ## Estado actual
 
