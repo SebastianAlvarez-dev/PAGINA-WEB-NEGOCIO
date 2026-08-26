@@ -59,7 +59,8 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se concedió a `faraluna-runtime` el rol `roles/secretmanager.secretAccessor`, limitado a `faraluna-supabase-secret`.
 - Se confirmó la conexión Session pooler: `aws-0-us-east-1.pooler.supabase.com:5432`, base `postgres`, usuario `postgres.ptvnlzvskbphglqamips`.
 - Se guardó la cadena Npgsql completa en Google Secret Manager como `faraluna-db-connection`, versión `1`, sin imprimir ni registrar la contraseña.
-- Próximo paso: conceder acceso mínimo a `faraluna-runtime` y `github-deployer` sobre `faraluna-db-connection`.
+- Se concedió a `faraluna-runtime` el rol `roles/secretmanager.secretAccessor`, limitado a `faraluna-db-connection`.
+- Próximo paso: conceder a `github-deployer` acceso mínimo sobre `faraluna-db-connection` para ejecutar las migraciones del pipeline.
 
 ## Estado actual
 
