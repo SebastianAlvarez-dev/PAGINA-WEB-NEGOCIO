@@ -79,7 +79,8 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se creó y confirmó el primer usuario administrativo en Supabase Auth mediante el proveedor Email; su contraseña no se registró en el chat, Git ni la documentación.
 - Se asignó `app_metadata.role = admin` mediante la API administrativa desde Cloud Shell, leyendo la clave secreta directamente desde Google Secret Manager.
 - Se preservaron los metadatos del proveedor y se verificó la respuesta administrativa sin revelar secretos.
-- Próximo paso: verificar el inicio de sesión en producción y cargar categorías, productos, stock y fotografías.
+- Se verificó en producción el inicio de sesión completo: Supabase autenticó al usuario, el token incluyó el rol y la API autorizó el panel administrativo.
+- Próximo paso: cargar categorías, productos, stock y fotografías, verificando la creación automática del bucket de Storage.
 
 ## Estado actual
 
