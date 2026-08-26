@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/backend/src/">
+    <Project Path="backend/src/JewelryStore.Api/JewelryStore.Api.csproj" />
+    <Project Path="backend/src/BuildingBlocks/BuildingBlocks.csproj" />
+    <Project Path="backend/src/Modules/Catalog/Catalog.Domain/Catalog.Domain.csproj" />
+    <Project Path="backend/src/Modules/Catalog/Catalog.Application/Catalog.Application.csproj" />
+    <Project Path="backend/src/Modules/Catalog/Catalog.Infrastructure/Catalog.Infrastructure.csproj" />
+    <Project Path="backend/src/Modules/Reviews/Reviews.Domain/Reviews.Domain.csproj" />
+    <Project Path="backend/src/Modules/Reviews/Reviews.Application/Reviews.Application.csproj" />
+    <Project Path="backend/src/Modules/Reviews/Reviews.Infrastructure/Reviews.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/backend/tests/">
+    <Project Path="backend/tests/Domain.Tests/Domain.Tests.csproj" />
+  </Folder>
+</Solution>
+

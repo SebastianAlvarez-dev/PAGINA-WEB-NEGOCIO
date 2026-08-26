@@ -1,0 +1,35 @@
+# .NET
+**/bin/
+**/obj/
+*.user
+*.suo
+TestResults/
+coverage/
+.artifacts/
+
+# Frontend
+**/node_modules/
+frontend/dist/
+*.tsbuildinfo
+backend/src/JewelryStore.Api/wwwroot/assets/
+backend/src/JewelryStore.Api/wwwroot/index.html
+backend/src/JewelryStore.Api/wwwroot/*.jpeg
+
+# Entornos y secretos
+.env
+.env.*
+!.env.example
+appsettings.Development.local.json
+gha-creds-*.json
+
+# Editores y sistema operativo
+.vs/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Registros y temporales
+*.log
+*.tmp
+*.cache
