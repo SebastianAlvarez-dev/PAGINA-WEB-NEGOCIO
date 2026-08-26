@@ -7,6 +7,17 @@ El pipeline crea dos imágenes y dos servicios de Cloud Run:
 | Frontend React + Nginx | `jewelry-store/faraluna-web` | `faraluna-web` |
 | API ASP.NET Core | `jewelry-store/faraluna-api` | `faraluna-api` |
 
+## Producción
+
+| Componente | URL pública |
+| --- | --- |
+| Frontend | `https://faraluna-web-psg7hp34iq-uc.a.run.app` |
+| Backend | `https://faraluna-api-psg7hp34iq-uc.a.run.app` |
+| Salud del frontend | `https://faraluna-web-psg7hp34iq-uc.a.run.app/health` |
+| Salud del backend | `https://faraluna-api-psg7hp34iq-uc.a.run.app/api/health` |
+
+El primer despliegue completo verificado corresponde a la ejecución de GitHub Actions `32946084706` y al commit `8334ea8`.
+
 ## 1. Preparar Google Cloud
 
 El proyecto exclusivo de producción para este sistema es:

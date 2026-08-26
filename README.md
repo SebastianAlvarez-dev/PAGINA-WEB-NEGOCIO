@@ -2,6 +2,8 @@
 
 Catálogo de bisutería con inventario, carrito por WhatsApp, reseñas moderadas y panel administrativo. Está construido como monolito modular con ASP.NET Core 10, React 19, DDD, CQRS, Clean Architecture, REST, EF Core y PostgreSQL de Supabase.
 
+Producción: [Faraluna Bisutería](https://faraluna-web-psg7hp34iq-uc.a.run.app)
+
 ## Ejecutar localmente
 
 La forma más rápida requiere Docker:

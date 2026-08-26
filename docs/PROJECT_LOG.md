@@ -71,12 +71,17 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - El frontend CI y el backend CI aprobaron, al igual que la autenticación OIDC y el acceso a Artifact Registry.
 - El primer CD se detuvo antes de publicar recursos porque el runner independiente del job de despliegue no había restaurado los paquetes NuGet requeridos por `dotnet ef`; no fue un error de credenciales ni de Supabase.
 - Se añadió al job de despliegue una restauración explícita de `JewelryStore.slnx` antes de ejecutar las migraciones.
-- Próximo paso: supervisar el nuevo CD iniciado automáticamente por el commit de corrección.
+- El segundo CD (`32946084706`) terminó correctamente en 3 minutos y 10 segundos: aplicó ambas migraciones, publicó las dos imágenes, desplegó los dos servicios, actualizó CORS y aprobó los chequeos de salud.
+- Frontend de producción: `https://faraluna-web-psg7hp34iq-uc.a.run.app`.
+- Backend de producción: `https://faraluna-api-psg7hp34iq-uc.a.run.app`.
+- Se realizó una verificación independiente posterior: API y frontend saludables, conexión a PostgreSQL operativa, catálogo consultable y CORS limitado al origen del frontend.
+- El catálogo de producción devuelve una lista vacía hasta que el administrador cargue los primeros productos reales.
+- Próximo paso: crear el usuario administrador inicial y cargar categorías, productos, stock y fotografías.
 
 ## Estado actual
 
 - Código almacenado en `SebastianAlvarez-dev/PAGINA-WEB-NEGOCIO`.
 - Aplicación construida y validada localmente.
 - CI configurado y aprobado.
-- Configuración inicial de Google Cloud en curso.
-- Despliegue de producción todavía pendiente.
+- Google Cloud, Supabase, Secret Manager y GitHub Actions configurados.
+- Frontend y backend desplegados independientemente en Cloud Run y verificados en producción.
