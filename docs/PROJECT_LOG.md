@@ -67,7 +67,11 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - La validación local final terminó correctamente: backend sin advertencias ni errores y 5/5 pruebas aprobadas; frontend sin vulnerabilidades reportadas, TypeScript válido y compilación de producción correcta.
 - Se confirmó que los últimos cinco CI ejecutados en GitHub terminaron correctamente.
 - La construcción local de imágenes no se ejecutó porque Docker Desktop no estaba iniciado; GitHub Actions realizará esta prueba en su runner durante el primer CD.
-- Próximo paso: activar `DEPLOY_ENABLED=true` para iniciar el primer despliegue completo y supervisar sus resultados.
+- Se activó `DEPLOY_ENABLED=true` y se inició manualmente el primer CD (`CI/CD #26`).
+- El frontend CI y el backend CI aprobaron, al igual que la autenticación OIDC y el acceso a Artifact Registry.
+- El primer CD se detuvo antes de publicar recursos porque el runner independiente del job de despliegue no había restaurado los paquetes NuGet requeridos por `dotnet ef`; no fue un error de credenciales ni de Supabase.
+- Se añadió al job de despliegue una restauración explícita de `JewelryStore.slnx` antes de ejecutar las migraciones.
+- Próximo paso: supervisar el nuevo CD iniciado automáticamente por el commit de corrección.
 
 ## Estado actual
 
