@@ -76,7 +76,10 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Backend de producción: `https://faraluna-api-psg7hp34iq-uc.a.run.app`.
 - Se realizó una verificación independiente posterior: API y frontend saludables, conexión a PostgreSQL operativa, catálogo consultable y CORS limitado al origen del frontend.
 - El catálogo de producción devuelve una lista vacía hasta que el administrador cargue los primeros productos reales.
-- Próximo paso: crear el usuario administrador inicial y cargar categorías, productos, stock y fotografías.
+- Se creó y confirmó el primer usuario administrativo en Supabase Auth mediante el proveedor Email; su contraseña no se registró en el chat, Git ni la documentación.
+- Se asignó `app_metadata.role = admin` mediante la API administrativa desde Cloud Shell, leyendo la clave secreta directamente desde Google Secret Manager.
+- Se preservaron los metadatos del proveedor y se verificó la respuesta administrativa sin revelar secretos.
+- Próximo paso: verificar el inicio de sesión en producción y cargar categorías, productos, stock y fotografías.
 
 ## Estado actual
 
