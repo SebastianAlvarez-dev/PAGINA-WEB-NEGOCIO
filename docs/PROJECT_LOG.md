@@ -27,7 +27,8 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - ID confirmado del proyecto: `faraluna-bisuteria`.
 - Cloud Shell quedó abierto con el proyecto correcto seleccionado.
 - Se habilitaron correctamente las APIs de Cloud Run, Artifact Registry, Secret Manager, IAM Credentials y Security Token Service.
-- Próximo paso: crear el repositorio Docker `jewelry-store` en Artifact Registry.
+- Se creó el repositorio Docker `jewelry-store` en Artifact Registry, región `us-central1`.
+- Próximo paso: crear la cuenta de servicio `github-deployer` para el despliegue automatizado.
 
 ## Estado actual
 
