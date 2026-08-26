@@ -54,7 +54,9 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - La clave secreta permaneció enmascarada y no se registró en capturas, chat, Git ni documentación.
 - La clave publicable se guardó como secreto del repositorio GitHub con el nombre `SUPABASE_PUBLISHABLE_KEY`.
 - Se adaptó el workflow para leer la clave publicable desde el contexto `secrets` de GitHub Actions.
-- Próximo paso: guardar la clave secreta de Supabase en Google Secret Manager.
+- Se creó `faraluna-supabase-secret` en Google Secret Manager con una versión habilitada.
+- Se verificó sin imprimir su contenido que el valor almacenado tiene el formato `sb_secret_...` esperado.
+- Próximo paso: conceder a `faraluna-runtime` acceso de lectura únicamente sobre este secreto.
 
 ## Estado actual
 
