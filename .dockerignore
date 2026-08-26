@@ -1,0 +1,13 @@
+.git
+.github
+**/bin
+**/obj
+**/node_modules
+**/dist
+**/.env*
+!**/.env.example
+gha-creds-*.json
+.vs
+.vscode
+.idea
+TestResults

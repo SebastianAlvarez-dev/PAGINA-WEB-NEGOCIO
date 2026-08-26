@@ -1,0 +1,191 @@
+name: CI/CD
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GCP_REGION: us-central1
+  GAR_REPOSITORY: jewelry-store
+  BACKEND_SERVICE: faraluna-api
+  FRONTEND_SERVICE: faraluna-web
+
+jobs:
+  backend-ci:
+    name: Backend CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Configurar .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restaurar
+        run: dotnet restore JewelryStore.slnx
+
+      - name: Compilar
+        run: dotnet build JewelryStore.slnx --configuration Release --no-restore
+
+      - name: Probar
+        run: dotnet test JewelryStore.slnx --configuration Release --no-build
+
+  frontend-ci:
+    name: Frontend CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Instalar dependencias
+        run: npm ci --prefix frontend
+
+      - name: Validar TypeScript
+        run: npm run lint --prefix frontend
+
+      - name: Compilar frontend
+        run: npm run build --prefix frontend
+
+  deploy:
+    name: Desplegar frontend y backend
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.GCP_PROJECT_ID != ''
+    needs: [backend-ci, frontend-ci]
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Configurar .NET para migraciones
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Autenticar en Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+
+      - name: Configurar Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v3
+
+      - name: Autenticar Docker en Artifact Registry
+        run: gcloud auth configure-docker "${GCP_REGION}-docker.pkg.dev" --quiet
+
+      - name: Aplicar migraciones de Supabase
+        shell: bash
+        run: |
+          supabase_connection="$(gcloud secrets versions access latest --secret=faraluna-db-connection --project='${{ vars.GCP_PROJECT_ID }}')"
+          export ConnectionStrings__Supabase="$supabase_connection"
+          dotnet tool restore
+          dotnet ef database update --project backend/src/Modules/Catalog/Catalog.Infrastructure --startup-project backend/src/JewelryStore.Api --context CatalogDbContext
+          dotnet ef database update --project backend/src/Modules/Reviews/Reviews.Infrastructure --startup-project backend/src/JewelryStore.Api --context ReviewsDbContext
+
+      - name: Construir y publicar backend
+        shell: bash
+        run: |
+          BACKEND_IMAGE="${GCP_REGION}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${GAR_REPOSITORY}/${BACKEND_SERVICE}:${{ github.sha }}"
+          docker build --file backend/Dockerfile --tag "$BACKEND_IMAGE" .
+          docker push "$BACKEND_IMAGE"
+
+      - name: Desplegar backend
+        id: deploy-backend
+        uses: google-github-actions/deploy-cloudrun@v3
+        with:
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+          region: ${{ env.GCP_REGION }}
+          service: ${{ env.BACKEND_SERVICE }}
+          image: ${{ env.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ env.GAR_REPOSITORY }}/${{ env.BACKEND_SERVICE }}:${{ github.sha }}
+          env_vars: |-
+            ASPNETCORE_ENVIRONMENT=Production
+            Database__ApplyMigrations=false
+            Database__SeedDemoData=false
+            Supabase__Url=${{ vars.SUPABASE_URL }}
+            Supabase__PublishableKey=${{ vars.SUPABASE_PUBLISHABLE_KEY }}
+            Cors__AllowedOrigins__0=https://pendiente.invalid
+          secrets: |-
+            ConnectionStrings__Supabase=faraluna-db-connection:latest
+            Supabase__SecretKey=faraluna-supabase-secret:latest
+          flags: --allow-unauthenticated --port=8080 --min-instances=0 --max-instances=5 --concurrency=40
+
+      - name: Construir y publicar frontend
+        shell: bash
+        run: |
+          FRONTEND_IMAGE="${GCP_REGION}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${GAR_REPOSITORY}/${FRONTEND_SERVICE}:${{ github.sha }}"
+          docker build \
+            --file frontend/Dockerfile \
+            --build-arg VITE_API_BASE_URL='${{ steps.deploy-backend.outputs.url }}' \
+            --build-arg VITE_SUPABASE_URL='${{ vars.SUPABASE_URL }}' \
+            --build-arg SUPABASE_PUBLIC_VALUE='${{ vars.SUPABASE_PUBLISHABLE_KEY }}' \
+            --build-arg VITE_WHATSAPP_NUMBER='${{ vars.WHATSAPP_NUMBER }}' \
+            --tag "$FRONTEND_IMAGE" \
+            .
+          docker push "$FRONTEND_IMAGE"
+
+      - name: Desplegar frontend
+        id: deploy-frontend
+        uses: google-github-actions/deploy-cloudrun@v3
+        with:
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+          region: ${{ env.GCP_REGION }}
+          service: ${{ env.FRONTEND_SERVICE }}
+          image: ${{ env.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ env.GAR_REPOSITORY }}/${{ env.FRONTEND_SERVICE }}:${{ github.sha }}
+          flags: --allow-unauthenticated --port=8080 --min-instances=0 --max-instances=3 --concurrency=80
+
+      - name: Autorizar el origen del frontend en el backend
+        uses: google-github-actions/deploy-cloudrun@v3
+        with:
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+          region: ${{ env.GCP_REGION }}
+          service: ${{ env.BACKEND_SERVICE }}
+          image: ${{ env.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ env.GAR_REPOSITORY }}/${{ env.BACKEND_SERVICE }}:${{ github.sha }}
+          env_vars: |-
+            ASPNETCORE_ENVIRONMENT=Production
+            Database__ApplyMigrations=false
+            Database__SeedDemoData=false
+            Supabase__Url=${{ vars.SUPABASE_URL }}
+            Supabase__PublishableKey=${{ vars.SUPABASE_PUBLISHABLE_KEY }}
+            Cors__AllowedOrigins__0=${{ steps.deploy-frontend.outputs.url }}
+          secrets: |-
+            ConnectionStrings__Supabase=faraluna-db-connection:latest
+            Supabase__SecretKey=faraluna-supabase-secret:latest
+          flags: --allow-unauthenticated --port=8080 --min-instances=0 --max-instances=5 --concurrency=40
+
+      - name: Verificar despliegue
+        shell: bash
+        run: |
+          curl --fail --retry 5 --retry-delay 5 '${{ steps.deploy-backend.outputs.url }}/api/health'
+          curl --fail --retry 5 --retry-delay 5 '${{ steps.deploy-frontend.outputs.url }}/health'
+
+      - name: Resumen
+        run: |
+          {
+            echo "### Faraluna desplegada"
+            echo "- Frontend: ${{ steps.deploy-frontend.outputs.url }}"
+            echo "- Backend: ${{ steps.deploy-backend.outputs.url }}"
+          } >> "$GITHUB_STEP_SUMMARY"
