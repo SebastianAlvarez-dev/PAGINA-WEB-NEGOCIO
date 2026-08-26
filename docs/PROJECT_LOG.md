@@ -90,6 +90,8 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se actualizó el mensaje principal, los llamados a la acción y la presentación de categorías sin cambiar la lógica existente del catálogo ni del carrito por WhatsApp.
 - Se añadieron estados de foco visibles y nombres accesibles para los controles móviles del menú y del carrito.
 - Se validaron TypeScript, la compilación de producción, la carga de todas las imágenes y el comportamiento responsive del menú, carrito, portada y catálogo.
+- El commit `1dd5c3d` activó el CI/CD `33014487708`: frontend, backend, migraciones, contenedores, despliegues y chequeos de salud terminaron correctamente.
+- Se verificó la nueva portada directamente en Cloud Run, incluyendo el texto principal y la carga completa de las cuatro imágenes visibles.
 
 ## Estado actual
 
