@@ -62,7 +62,12 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se concedió a `faraluna-runtime` el rol `roles/secretmanager.secretAccessor`, limitado a `faraluna-db-connection`.
 - Se concedió a `github-deployer` el rol `roles/secretmanager.secretAccessor`, limitado a `faraluna-db-connection`, para ejecutar las migraciones del pipeline.
 - Se verificó que `github-deployer` no necesita acceso a `faraluna-supabase-secret`: el workflow solo referencia ese secreto y Cloud Run lo entrega mediante `faraluna-runtime`.
-- Próximo paso: completar las variables restantes de GitHub y mantener `DEPLOY_ENABLED=false` hasta la revisión final del pipeline.
+- Se configuró en GitHub la variable `WHATSAPP_NUMBER=593996359219`; quedaron completas las seis variables requeridas por el workflow.
+- Se revisó el workflow contra la documentación vigente de las acciones oficiales de Google: autenticación OIDC y despliegue a Cloud Run usan la sintaxis actual.
+- La validación local final terminó correctamente: backend sin advertencias ni errores y 5/5 pruebas aprobadas; frontend sin vulnerabilidades reportadas, TypeScript válido y compilación de producción correcta.
+- Se confirmó que los últimos cinco CI ejecutados en GitHub terminaron correctamente.
+- La construcción local de imágenes no se ejecutó porque Docker Desktop no estaba iniciado; GitHub Actions realizará esta prueba en su runner durante el primer CD.
+- Próximo paso: activar `DEPLOY_ENABLED=true` para iniciar el primer despliegue completo y supervisar sus resultados.
 
 ## Estado actual
 
