@@ -33,7 +33,8 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se actualizó el workflow para asignar explícitamente `faraluna-runtime` al frontend y al backend.
 - Se concedió a `github-deployer` el rol `roles/run.admin` para administrar los despliegues de Cloud Run.
 - Se concedió a `github-deployer` el rol `roles/artifactregistry.writer`, limitado al repositorio `jewelry-store`.
-- Próximo paso: permitir que `github-deployer` asigne `faraluna-runtime` a los servicios de Cloud Run.
+- Se concedió a `github-deployer` el rol `roles/iam.serviceAccountUser` sobre `faraluna-runtime`.
+- Próximo paso: crear el pool de Workload Identity Federation para autenticar GitHub Actions sin llaves JSON.
 
 ## Estado actual
 
