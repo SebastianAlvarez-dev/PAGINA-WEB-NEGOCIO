@@ -46,6 +46,8 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 ### Supabase
 
 - Se creó el proyecto `faraluna-bisuteria-db` en la región general `Americas`.
+- Se confirmó la asignación exacta a `us-east-1` (East US, North Virginia), con referencia pública `ptvnlzvskbphglqamips`.
+- URL pública del proyecto: `https://ptvnlzvskbphglqamips.supabase.co`.
 - Se dejó sin conectar la integración GitHub de Supabase porque el esquema se desplegará mediante EF Core y nuestro workflow existente.
 - Se rotó la contraseña inicial de PostgreSQL después de que apareciera en una captura; el nuevo valor no se registró en el chat, Git ni la documentación.
 - Próximo paso: obtener la URL del proyecto y crear o localizar las claves API publicable y secreta.

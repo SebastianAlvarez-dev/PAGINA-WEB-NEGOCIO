@@ -67,11 +67,13 @@ En **Settings > Secrets and variables > Actions > Variables**, agrega:
 | `GCP_PROJECT_ID` | `faraluna-bisuteria` |
 | `GCP_WORKLOAD_IDENTITY_PROVIDER` | `projects/487549405508/locations/global/workloadIdentityPools/github/providers/faraluna-github` |
 | `GCP_SERVICE_ACCOUNT` | `github-deployer@faraluna-bisuteria.iam.gserviceaccount.com` |
-| `SUPABASE_URL` | `https://PROJECT_REF.supabase.co` |
+| `SUPABASE_URL` | `https://ptvnlzvskbphglqamips.supabase.co` |
 | `SUPABASE_PUBLISHABLE_KEY` | `sb_publishable_...` |
 | `WHATSAPP_NUMBER` | `593996359219` |
 
 La clave publicable de Supabase se integra en el frontend y no concede privilegios administrativos. La clave `sb_secret_...` permanece exclusivamente en Secret Manager y solo llega al backend.
+
+El proyecto de Supabase se llama `faraluna-bisuteria-db`, su referencia pública es `ptvnlzvskbphglqamips` y está alojado en `us-east-1`.
 
 ## 4. Ejecutar el pipeline
 
