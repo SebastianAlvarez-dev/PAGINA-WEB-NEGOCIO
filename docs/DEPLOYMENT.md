@@ -28,14 +28,9 @@ gcloud services enable run.googleapis.com artifactregistry.googleapis.com secret
 gcloud artifacts repositories create jewelry-store --repository-format=docker --location=us-central1
 ```
 
-Crea los secretos. Nunca guardes sus valores en Git:
+Crea los secretos. Nunca guardes sus valores en Git ni los escribas directamente en el historial de la terminal. En este proyecto ya se crearon `faraluna-db-connection` y `faraluna-supabase-secret`, ambos con una primera versión habilitada.
 
-```bash
-printf '%s' 'CADENA_POSTGRES_DE_SUPABASE' | gcloud secrets create faraluna-db-connection --data-file=-
-printf '%s' 'sb_secret_REEMPLAZAR' | gcloud secrets create faraluna-supabase-secret --data-file=-
-```
-
-La cuenta de servicio que ejecuta Cloud Run necesita `roles/secretmanager.secretAccessor` para leer ambos secretos.
+La cuenta de servicio que ejecuta Cloud Run necesita `roles/secretmanager.secretAccessor` para leer ambos secretos. La cuenta de despliegue necesita ese mismo rol únicamente sobre `faraluna-db-connection`, porque el workflow lee la cadena para ejecutar las migraciones de Entity Framework Core.
 
 Las identidades utilizadas son:
 
