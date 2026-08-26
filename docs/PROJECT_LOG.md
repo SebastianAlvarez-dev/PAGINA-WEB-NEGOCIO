@@ -56,7 +56,8 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se adaptó el workflow para leer la clave publicable desde el contexto `secrets` de GitHub Actions.
 - Se creó `faraluna-supabase-secret` en Google Secret Manager con una versión habilitada.
 - Se verificó sin imprimir su contenido que el valor almacenado tiene el formato `sb_secret_...` esperado.
-- Próximo paso: conceder a `faraluna-runtime` acceso de lectura únicamente sobre este secreto.
+- Se concedió a `faraluna-runtime` el rol `roles/secretmanager.secretAccessor`, limitado a `faraluna-supabase-secret`.
+- Próximo paso: obtener la conexión Session pooler de PostgreSQL y guardarla en Secret Manager.
 
 ## Estado actual
 
