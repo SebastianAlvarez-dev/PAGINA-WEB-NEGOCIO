@@ -42,7 +42,13 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se añadió la variable de control `DEPLOY_ENABLED` al workflow para impedir despliegues incompletos.
 - Se guardaron en GitHub `GCP_PROJECT_ID`, `GCP_WORKLOAD_IDENTITY_PROVIDER` y `GCP_SERVICE_ACCOUNT`.
 - `DEPLOY_ENABLED` quedó en `false` hasta completar Supabase y Secret Manager.
-- Próximo paso: crear y configurar el proyecto de Supabase.
+
+### Supabase
+
+- Se creó el proyecto `faraluna-bisuteria-db` en la región general `Americas`.
+- Se dejó sin conectar la integración GitHub de Supabase porque el esquema se desplegará mediante EF Core y nuestro workflow existente.
+- Se rotó la contraseña inicial de PostgreSQL después de que apareciera en una captura; el nuevo valor no se registró en el chat, Git ni la documentación.
+- Próximo paso: obtener la URL del proyecto y crear o localizar las claves API publicable y secreta.
 
 ## Estado actual
 
