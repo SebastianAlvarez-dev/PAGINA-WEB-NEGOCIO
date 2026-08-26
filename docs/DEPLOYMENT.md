@@ -15,6 +15,7 @@ El proyecto exclusivo de producción para este sistema es:
 | --- | --- |
 | Nombre | `Faraluna Bisutería` |
 | ID del proyecto | `faraluna-bisuteria` |
+| Número del proyecto | `487549405508` |
 | Región inicial | `us-central1` |
 
 No se debe desplegar en el proyecto universitario `Landing Page`.
@@ -63,8 +64,8 @@ En **Settings > Secrets and variables > Actions > Variables**, agrega:
 | Variable | Ejemplo |
 | --- | --- |
 | `GCP_PROJECT_ID` | `faraluna-bisuteria` |
-| `GCP_WORKLOAD_IDENTITY_PROVIDER` | `projects/123456789/locations/global/workloadIdentityPools/github/providers/faraluna` |
-| `GCP_SERVICE_ACCOUNT` | `github-deployer@mi-proyecto-123.iam.gserviceaccount.com` |
+| `GCP_WORKLOAD_IDENTITY_PROVIDER` | `projects/487549405508/locations/global/workloadIdentityPools/github/providers/faraluna-github` |
+| `GCP_SERVICE_ACCOUNT` | `github-deployer@faraluna-bisuteria.iam.gserviceaccount.com` |
 | `SUPABASE_URL` | `https://PROJECT_REF.supabase.co` |
 | `SUPABASE_PUBLISHABLE_KEY` | `sb_publishable_...` |
 | `WHATSAPP_NUMBER` | `593996359219` |
