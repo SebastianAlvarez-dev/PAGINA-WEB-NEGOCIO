@@ -52,7 +52,9 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se rotó la contraseña inicial de PostgreSQL después de que apareciera en una captura; el nuevo valor no se registró en el chat, Git ni la documentación.
 - Se verificó que el proyecto dispone de una clave `sb_publishable_...` y una clave `sb_secret_...` modernas, ambas con nombre `default`.
 - La clave secreta permaneció enmascarada y no se registró en capturas, chat, Git ni documentación.
-- Próximo paso: guardar la clave publicable como variable de GitHub y la clave secreta en Google Secret Manager.
+- La clave publicable se guardó como secreto del repositorio GitHub con el nombre `SUPABASE_PUBLISHABLE_KEY`.
+- Se adaptó el workflow para leer la clave publicable desde el contexto `secrets` de GitHub Actions.
+- Próximo paso: guardar la clave secreta de Supabase en Google Secret Manager.
 
 ## Estado actual
 

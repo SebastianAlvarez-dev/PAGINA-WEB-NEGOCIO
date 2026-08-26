@@ -68,10 +68,15 @@ En **Settings > Secrets and variables > Actions > Variables**, agrega:
 | `GCP_WORKLOAD_IDENTITY_PROVIDER` | `projects/487549405508/locations/global/workloadIdentityPools/github/providers/faraluna-github` |
 | `GCP_SERVICE_ACCOUNT` | `github-deployer@faraluna-bisuteria.iam.gserviceaccount.com` |
 | `SUPABASE_URL` | `https://ptvnlzvskbphglqamips.supabase.co` |
-| `SUPABASE_PUBLISHABLE_KEY` | `sb_publishable_...` |
 | `WHATSAPP_NUMBER` | `593996359219` |
 
-La clave publicable de Supabase se integra en el frontend y no concede privilegios administrativos. La clave `sb_secret_...` permanece exclusivamente en Secret Manager y solo llega al backend.
+En **Settings > Secrets and variables > Actions > Secrets**, agrega:
+
+| Secreto de GitHub | Uso |
+| --- | --- |
+| `SUPABASE_PUBLISHABLE_KEY` | Clave `sb_publishable_...` utilizada durante la compilación y el despliegue |
+
+La clave publicable de Supabase no concede privilegios administrativos, aunque en este repositorio se guarda como secreto de GitHub para mantener una única configuración. La clave `sb_secret_...` permanece exclusivamente en Google Secret Manager y solo llega al backend.
 
 El proyecto de Supabase se llama `faraluna-bisuteria-db`, su referencia pública es `ptvnlzvskbphglqamips` y está alojado en `us-east-1`.
 

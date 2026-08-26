@@ -126,7 +126,7 @@ jobs:
             Database__ApplyMigrations=false
             Database__SeedDemoData=false
             Supabase__Url=${{ vars.SUPABASE_URL }}
-            Supabase__PublishableKey=${{ vars.SUPABASE_PUBLISHABLE_KEY }}
+            Supabase__PublishableKey=${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
             Cors__AllowedOrigins__0=https://pendiente.invalid
           secrets: |-
             ConnectionStrings__Supabase=faraluna-db-connection:latest
@@ -141,7 +141,7 @@ jobs:
             --file frontend/Dockerfile \
             --build-arg VITE_API_BASE_URL='${{ steps.deploy-backend.outputs.url }}' \
             --build-arg VITE_SUPABASE_URL='${{ vars.SUPABASE_URL }}' \
-            --build-arg SUPABASE_PUBLIC_VALUE='${{ vars.SUPABASE_PUBLISHABLE_KEY }}' \
+            --build-arg SUPABASE_PUBLIC_VALUE='${{ secrets.SUPABASE_PUBLISHABLE_KEY }}' \
             --build-arg VITE_WHATSAPP_NUMBER='${{ vars.WHATSAPP_NUMBER }}' \
             --tag "$FRONTEND_IMAGE" \
             .
@@ -169,7 +169,7 @@ jobs:
             Database__ApplyMigrations=false
             Database__SeedDemoData=false
             Supabase__Url=${{ vars.SUPABASE_URL }}
-            Supabase__PublishableKey=${{ vars.SUPABASE_PUBLISHABLE_KEY }}
+            Supabase__PublishableKey=${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
             Cors__AllowedOrigins__0=${{ steps.deploy-frontend.outputs.url }}
           secrets: |-
             ConnectionStrings__Supabase=faraluna-db-connection:latest
