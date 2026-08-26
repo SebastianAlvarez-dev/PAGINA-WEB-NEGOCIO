@@ -28,7 +28,8 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Cloud Shell quedó abierto con el proyecto correcto seleccionado.
 - Se habilitaron correctamente las APIs de Cloud Run, Artifact Registry, Secret Manager, IAM Credentials y Security Token Service.
 - Se creó el repositorio Docker `jewelry-store` en Artifact Registry, región `us-central1`.
-- Próximo paso: crear la cuenta de servicio `github-deployer` para el despliegue automatizado.
+- Se creó la cuenta de servicio `github-deployer@faraluna-bisuteria.iam.gserviceaccount.com` para el despliegue automatizado.
+- Próximo paso: crear una cuenta de servicio separada para ejecutar los servicios de Cloud Run.
 
 ## Estado actual
 
