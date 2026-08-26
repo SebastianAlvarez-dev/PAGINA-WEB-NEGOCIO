@@ -36,6 +36,13 @@ printf '%s' 'sb_secret_REEMPLAZAR' | gcloud secrets create faraluna-supabase-sec
 
 La cuenta de servicio que ejecuta Cloud Run necesita `roles/secretmanager.secretAccessor` para leer ambos secretos.
 
+Las identidades utilizadas son:
+
+| Cuenta | Responsabilidad |
+| --- | --- |
+| `github-deployer@faraluna-bisuteria.iam.gserviceaccount.com` | Autenticar GitHub Actions y realizar despliegues |
+| `faraluna-runtime@faraluna-bisuteria.iam.gserviceaccount.com` | Ejecutar los servicios de Cloud Run y leer secretos en producción |
+
 ## 2. Conectar GitHub mediante Workload Identity Federation
 
 Crea una cuenta de servicio para despliegues y un proveedor OIDC restringido al repositorio `SebastianAlvarez-dev/PAGINA-WEB-NEGOCIO`. La identidad debe poder impersonar esa cuenta mediante `roles/iam.workloadIdentityUser`.
@@ -45,7 +52,7 @@ La cuenta de despliegue necesita, como mínimo:
 - `roles/run.admin`
 - `roles/artifactregistry.writer`
 - `roles/secretmanager.secretAccessor`
-- `roles/iam.serviceAccountUser` sobre la cuenta usada por Cloud Run
+- `roles/iam.serviceAccountUser` sobre `faraluna-runtime`
 
 No uses una llave JSON de cuenta de servicio. El workflow solicita credenciales temporales mediante OIDC.
 
