@@ -31,7 +31,8 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se creó la cuenta de servicio `github-deployer@faraluna-bisuteria.iam.gserviceaccount.com` para el despliegue automatizado.
 - Se creó la cuenta `faraluna-runtime@faraluna-bisuteria.iam.gserviceaccount.com` para ejecutar los servicios de Cloud Run.
 - Se actualizó el workflow para asignar explícitamente `faraluna-runtime` al frontend y al backend.
-- Próximo paso: conceder a `github-deployer` los permisos mínimos de despliegue.
+- Se concedió a `github-deployer` el rol `roles/run.admin` para administrar los despliegues de Cloud Run.
+- Próximo paso: conceder a `github-deployer` permiso para publicar imágenes en Artifact Registry.
 
 ## Estado actual
 
