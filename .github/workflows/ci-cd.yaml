@@ -67,7 +67,7 @@ jobs:
 
   deploy:
     name: Desplegar frontend y backend
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.GCP_PROJECT_ID != ''
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.DEPLOY_ENABLED == 'true'
     needs: [backend-ci, frontend-ci]
     runs-on: ubuntu-latest
     environment: production

@@ -63,6 +63,7 @@ En **Settings > Secrets and variables > Actions > Variables**, agrega:
 
 | Variable | Ejemplo |
 | --- | --- |
+| `DEPLOY_ENABLED` | `false` durante la configuración; cambiar a `true` cuando todo esté listo |
 | `GCP_PROJECT_ID` | `faraluna-bisuteria` |
 | `GCP_WORKLOAD_IDENTITY_PROVIDER` | `projects/487549405508/locations/global/workloadIdentityPools/github/providers/faraluna-github` |
 | `GCP_SERVICE_ACCOUNT` | `github-deployer@faraluna-bisuteria.iam.gserviceaccount.com` |
@@ -74,7 +75,7 @@ La clave publicable de Supabase se integra en el frontend y no concede privilegi
 
 ## 4. Ejecutar el pipeline
 
-Todo pull request hacia `main` ejecuta CI. Todo push a `main`, cuando `GCP_PROJECT_ID` está configurado, ejecuta también CD. También puedes iniciarlo manualmente desde **Actions > CI/CD > Run workflow**.
+Todo pull request y push hacia `main` ejecuta CI. El CD solo se ejecuta cuando `DEPLOY_ENABLED` tiene exactamente el valor `true`. Debe permanecer en `false` hasta completar Google Cloud, Supabase y Secret Manager. También puedes iniciar el workflow manualmente desde **Actions > CI/CD > Run workflow**.
 
 El orden del despliegue es:
 

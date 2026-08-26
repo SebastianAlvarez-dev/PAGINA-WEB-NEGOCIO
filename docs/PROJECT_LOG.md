@@ -38,7 +38,11 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se creó el proveedor OIDC `faraluna-github`, configurado para restringir la confianza al repositorio de Faraluna y a la rama `main`.
 - Se verificó que el proveedor está `ACTIVE`, usa el emisor oficial de GitHub y contiene los atributos y la condición de seguridad esperados.
 - Número confirmado del proyecto de Google Cloud: `487549405508`.
-- Próximo paso: autorizar al repositorio federado para suplantar temporalmente a `github-deployer`.
+- Se autorizó al repositorio federado para suplantar temporalmente a `github-deployer` mediante `roles/iam.workloadIdentityUser`.
+- Se añadió la variable de control `DEPLOY_ENABLED` al workflow para impedir despliegues incompletos.
+- Se guardaron en GitHub `GCP_PROJECT_ID`, `GCP_WORKLOAD_IDENTITY_PROVIDER` y `GCP_SERVICE_ACCOUNT`.
+- `DEPLOY_ENABLED` quedó en `false` hasta completar Supabase y Secret Manager.
+- Próximo paso: crear y configurar el proyecto de Supabase.
 
 ## Estado actual
 

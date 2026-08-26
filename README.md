@@ -78,7 +78,7 @@ El frontend y el backend se publican como servicios independientes:
 - `faraluna-web`: React servido por Nginx en Cloud Run.
 - `faraluna-api`: API REST de ASP.NET Core en Cloud Run.
 
-El workflow `.github/workflows/ci-cd.yaml` compila y prueba cada proyecto en pull requests. En `main`, aplica las migraciones, publica dos imágenes en Artifact Registry y despliega ambos servicios. Si las variables de Google Cloud todavía no existen, el CI se ejecuta y el despliegue se omite de forma segura.
+El workflow `.github/workflows/ci-cd.yaml` compila y prueba cada proyecto en pull requests y pushes. En `main`, cuando la variable `DEPLOY_ENABLED` es `true`, aplica las migraciones, publica dos imágenes en Artifact Registry y despliega ambos servicios. Mientras la configuración de producción esté incompleta, el valor `false` mantiene activo el CI y omite el despliegue de forma segura.
 
 Consulta [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) para realizar la configuración inicial de Google Cloud, GitHub y Supabase. La arquitectura interna está documentada en [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
