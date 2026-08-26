@@ -15,19 +15,25 @@ export function HomePage() {
   return <>
     <section className="hero">
       <div className="hero-copy">
-        <span className="eyebrow">NUEVA COLECCIÓN · 2026</span>
-        <h1>Detalles que hablan<br/><em>por ti.</em></h1>
-        <p>Piezas delicadas para acompañar tus días, celebrar tus momentos y regalar un poquito de intención.</p>
+        <span className="hero-kicker">✦ NUEVA COLECCIÓN · 2026</span>
+        <h1>Accesorios para sentirte <em>muy tú.</em></h1>
+        <p>Detalles con brillo, color y personalidad para elevar tus looks, celebrar tus momentos y regalar algo especial.</p>
         <div className="hero-actions">
-          <Link className="primary-button" to="/catalogo">Explorar catálogo <ArrowIcon /></Link>
-          <a className="text-link" href="#nosotros">Nuestra historia</a>
+          <Link className="primary-button hero-primary" to="/catalogo">Ver la colección <ArrowIcon /></Link>
+          <a className="hero-link" href="#favoritas">Descubrir favoritas</a>
         </div>
-        <div className="hero-trust"><span>✦ Hecho con cuidado</span><span>◇ Stock actualizado</span><span>♡ Atención cercana</span></div>
+        <div className="hero-trust"><span>♡ Diseños para enamorarte</span><span>✦ Stock actualizado</span><span>↗ Pedido fácil por WhatsApp</span></div>
       </div>
-      <div className="hero-art" aria-label="Identidad visual de Faraluna Bisutería">
-        <div className="hero-logo-frame"><img src="/LOGO%202.jpeg" alt="Faraluna Bisutería" /></div>
-        <div className="art-note">hecho<br/><strong>con amor</strong><span>↗</span></div>
-        <div className="hero-spark spark-one">✦</div><div className="hero-spark spark-two">✧</div>
+      <div className="hero-gallery">
+        <figure className="hero-card hero-card-main">
+          <img src="/campaigns/corazones-rojos.png" alt="Conjunto Faraluna de collar y aretes dorados con corazones rojos" fetchPriority="high" />
+        </figure>
+        <figure className="hero-card hero-card-accent">
+          <img src="/campaigns/corazones-verdes.png" alt="Conjunto Faraluna de collar y aretes dorados con corazones verdes" />
+        </figure>
+        <div className="hero-sticker" aria-hidden="true"><span>♡</span> tu brillo<br/><strong>tu estilo</strong></div>
+        <span className="hero-spark spark-one" aria-hidden="true">✦</span>
+        <span className="hero-spark spark-two" aria-hidden="true">✧</span>
       </div>
     </section>
 
@@ -38,11 +44,29 @@ export function HomePage() {
       <Link to="/catalogo?categoria=anillos"><span className="category-symbol">◎</span><div><small>CELEBRA</small><strong>Anillos</strong></div></Link>
     </section>
 
-    <section className="featured section-wrap">
+    <section id="favoritas" className="featured section-wrap">
       <div className="section-heading"><div><span className="eyebrow">LAS FAVORITAS</span><h2>Piezas para <em>enamorarte</em></h2></div><Link to="/catalogo">Ver todo <ArrowIcon /></Link></div>
       {!products && <div className="loading-grid">Cargando piezas…</div>}
       {products && products.items.length > 0 && <div className="product-grid">{products.items.map(product => <ProductCard key={product.id} product={product} />)}</div>}
       {products?.items.length === 0 && <div className="catalog-empty"><span>◇</span><h3>La colección está tomando forma</h3><p>Pronto encontrarás aquí nuestras piezas. Si eres administradora, agrega el primer producto desde el panel.</p><Link className="secondary-button" to="/admin">Abrir administración</Link></div>}
+    </section>
+
+    <section className="campaign-section">
+      <div className="campaign-visual">
+        <img src="/campaigns/cadenas-doradas.png" alt="Tres estilos de cadenas doradas Faraluna sobre una base clara" loading="lazy" />
+        <span className="campaign-badge">FAVORITOS<br/><strong>DE TODOS LOS DÍAS</strong></span>
+      </div>
+      <div className="campaign-copy">
+        <span className="eyebrow">BRILLA TU ESENCIA</span>
+        <h2>Tu toque de luz,<br/><em>todos los días.</em></h2>
+        <p>Combina piezas sutiles, clásicas o con un poco más de color. Elige las que conecten contigo y arma un pedido tan único como tu estilo.</p>
+        <div className="campaign-details">
+          <span><b>01</b> Clásica &amp; atemporal</span>
+          <span><b>02</b> Sutil &amp; elegante</span>
+          <span><b>03</b> Moderna &amp; chic</span>
+        </div>
+        <Link className="primary-button" to="/catalogo">Encontrar mi favorita <ArrowIcon /></Link>
+      </div>
     </section>
 
     <section id="nosotros" className="story-section">

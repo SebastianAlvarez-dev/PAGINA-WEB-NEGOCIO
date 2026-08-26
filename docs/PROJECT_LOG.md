@@ -80,7 +80,16 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se asignó `app_metadata.role = admin` mediante la API administrativa desde Cloud Shell, leyendo la clave secreta directamente desde Google Secret Manager.
 - Se preservaron los metadatos del proveedor y se verificó la respuesta administrativa sin revelar secretos.
 - Se verificó en producción el inicio de sesión completo: Supabase autenticó al usuario, el token incluyó el rol y la API autorizó el panel administrativo.
-- Próximo paso: cargar categorías, productos, stock y fotografías, verificando la creación automática del bucket de Storage.
+- Se probó desde el panel administrativo la gestión de categorías, productos, stock y fotografías.
+- Se confirmó que los archivos de producto se almacenan en Supabase Storage y que PostgreSQL conserva la URL asociada al producto.
+
+### Rediseño de la tienda
+
+- Se renovó la portada con una identidad más juvenil basada en morado, rosa, crema y dorado, manteniendo la estética de Faraluna.
+- Se incorporaron tres piezas gráficas oficiales: conjuntos de corazones rojos y verdes en el hero, y una campaña de cadenas doradas en una sección editorial.
+- Se actualizó el mensaje principal, los llamados a la acción y la presentación de categorías sin cambiar la lógica existente del catálogo ni del carrito por WhatsApp.
+- Se añadieron estados de foco visibles y nombres accesibles para los controles móviles del menú y del carrito.
+- Se validaron TypeScript, la compilación de producción, la carga de todas las imágenes y el comportamiento responsive del menú, carrito, portada y catálogo.
 
 ## Estado actual
 
@@ -89,3 +98,4 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - CI configurado y aprobado.
 - Google Cloud, Supabase, Secret Manager y GitHub Actions configurados.
 - Frontend y backend desplegados independientemente en Cloud Run y verificados en producción.
+- Catálogo, autenticación administrativa, carga de fotografías y almacenamiento en Supabase probados.

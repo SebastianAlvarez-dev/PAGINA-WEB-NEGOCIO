@@ -16,7 +16,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <span><strong>FARALUNA</strong><small>bisutería hecha con amor</small></span>
       </Link>
 
-      <button className="icon-button mobile-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menú">
+      <button className="icon-button mobile-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen}>
         {menuOpen ? <CloseIcon /> : <MenuIcon />}
       </button>
 
@@ -27,7 +27,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <a href="/#contacto">Contacto</a>
       </nav>
 
-      <button className="cart-button" onClick={() => cart.setOpen(true)}>
+      <button className="cart-button" onClick={() => cart.setOpen(true)} aria-label={`Abrir mi pedido${cart.count > 0 ? `, ${cart.count} productos` : ''}`}>
         <BagIcon />
         <span>Mi pedido</span>
         {cart.count > 0 && <b>{cart.count}</b>}
