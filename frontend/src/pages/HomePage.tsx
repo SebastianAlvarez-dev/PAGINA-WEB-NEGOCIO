@@ -20,10 +20,8 @@ export function HomePage() {
         <h1>Brilla tu esencia <em>cada día.</em></h1>
         <p>Piezas delicadas, juveniles y llenas de personalidad para convertir cada look en una forma de decir quién eres.</p>
         <div className="hero-actions">
-          <Link className="primary-button hero-primary" to="/catalogo">Descubrir la colección <ArrowIcon /></Link>
-          <a className="hero-link" href="#nosotros">Conoce Faraluna</a>
+          <Link className="primary-button hero-primary" to="/catalogo">Ver catálogo <ArrowIcon /></Link>
         </div>
-        <div className="hero-trust"><span>♡ Detalles para enamorarte</span><span>✦ Stock real</span><span>↗ Pedido fácil por WhatsApp</span></div>
       </div>
       <div className="hero-gallery">
         <figure className="hero-card hero-card-main">
@@ -49,40 +47,10 @@ export function HomePage() {
     </section>
 
     <section id="favoritas" className="featured section-wrap">
-      <div className="section-heading"><div><span className="eyebrow">DESTELLOS QUE CONECTAN CONTIGO</span><h2>Las favoritas de <em>Faraluna</em></h2></div><Link to="/catalogo">Ver toda la colección <ArrowIcon /></Link></div>
+      <div className="section-heading"><div><span className="eyebrow">DESTELLOS QUE CONECTAN CONTIGO</span><h2>Las favoritas de <em>Faraluna</em></h2></div></div>
       {!products && <div className="loading-grid">Cargando piezas…</div>}
       {products && products.items.length > 0 && <div className="product-grid">{products.items.map(product => <ProductCard key={product.id} product={product} />)}</div>}
-      {products?.items.length === 0 && <div className="catalog-empty"><span>◇</span><h3>La colección está tomando forma</h3><p>Pronto encontrarás aquí nuestras piezas. Si eres administradora, agrega el primer producto desde el panel.</p><Link className="secondary-button" to="/admin">Abrir administración</Link></div>}
-    </section>
-
-    <section className="campaign-section">
-      <div className="campaign-visual">
-        <img src="/campaigns/cadenas-doradas.png" alt="Tres estilos de cadenas doradas Faraluna sobre una base clara" loading="lazy" />
-        <span className="campaign-badge">FAVORITOS<br/><strong>DE TODOS LOS DÍAS</strong></span>
-      </div>
-      <div className="campaign-copy">
-        <span className="eyebrow">BRILLA TU ESENCIA</span>
-        <h2>Tu toque de luz,<br/><em>todos los días.</em></h2>
-        <p>Combina piezas sutiles, clásicas o con un poco más de color. Elige las que conecten contigo y arma un pedido tan único como tu estilo.</p>
-        <div className="campaign-details">
-          <span><b>01</b> Clásica &amp; atemporal</span>
-          <span><b>02</b> Sutil &amp; elegante</span>
-          <span><b>03</b> Moderna &amp; chic</span>
-        </div>
-        <Link className="primary-button" to="/catalogo">Encontrar mi favorita <ArrowIcon /></Link>
-      </div>
-    </section>
-
-    <section id="nosotros" className="story-section">
-      <div className="story-art"><img src="/campaigns/corazones-verdes.png" alt="Conjunto de corazones verdes Faraluna" loading="lazy"/><div className="story-seal"><span>☾</span><strong>hecho<br/>con alma</strong></div></div>
-      <div className="story-copy"><span className="eyebrow">NUESTRA HISTORIA</span><h2>Más que accesorios,<br/><em>pequeños recuerdos.</em></h2><p>Faraluna Bisutería nace del gusto por los detalles: una pieza que completa un look, celebra una amistad o se convierte en ese regalo que sí dice lo que sentimos.</p><p>Seleccionamos cada pieza y preparamos cada pedido con el mismo cuidado con el que nos gustaría recibirlo.</p><Link className="text-link" to="/catalogo">Conoce la colección <ArrowIcon /></Link></div>
-    </section>
-
-    <section className="promise-section section-wrap"><div><strong>01 · ACTUAL</strong><h3>Stock real</h3><p>El catálogo muestra la disponibilidad actual de cada pieza.</p></div><div><strong>02 · CERCANO</strong><h3>Compra acompañada</h3><p>Confirmamos tu pedido, entrega y forma de pago por WhatsApp.</p></div><div><strong>03 · AUTÉNTICO</strong><h3>Tu opinión importa</h3><p>Comparte una reseña y ayuda a otras personas a elegir.</p></div></section>
-
-    <section className="contact-feature">
-      <img src="/LOGO1.jpeg" alt="Faraluna Bisutería. Contáctanos al 099 6359 219" />
-      <div><span className="eyebrow">ATENCIÓN PERSONALIZADA</span><h2>¿Encontraste esa pieza<br/><em>muy tú?</em></h2><p>Arma tu selección y envíanos el pedido por WhatsApp. Confirmaremos contigo el stock, la entrega y la forma de pago.</p><a className="primary-button" href="https://wa.me/593996359219">Conversemos por WhatsApp <ArrowIcon /></a></div>
+      {products?.items.length === 0 && <div className="catalog-empty"><span>◇</span><h3>La colección está tomando forma</h3><p>Pronto encontrarás aquí nuevas piezas elegidas con mucho cariño.</p></div>}
     </section>
   </>
 }

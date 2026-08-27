@@ -10,7 +10,6 @@ export function Layout({ children }: { children: ReactNode }) {
   const cart = useCart()
 
   return <div className="site-shell">
-    <div className="announcement"><span>✦ Envíos a todo Ecuador</span><span>Atención personalizada por WhatsApp</span><span>Stock actualizado</span></div>
     <header className="site-header">
       <Link className="brand" to="/" aria-label="Faraluna Bisutería, inicio">
         <BrandMark />
@@ -24,8 +23,6 @@ export function Layout({ children }: { children: ReactNode }) {
       <nav className={menuOpen ? 'main-nav open' : 'main-nav'} onClick={() => setMenuOpen(false)}>
         <NavLink to="/">Inicio</NavLink>
         <NavLink to="/catalogo">Catálogo</NavLink>
-        <a href="/#nosotros">Nosotros</a>
-        <a href="/#contacto">Contacto</a>
       </nav>
 
       <button className="cart-button" onClick={() => cart.setOpen(true)} aria-label={`Abrir mi pedido${cart.count > 0 ? `, ${cart.count} productos` : ''}`}>
@@ -42,7 +39,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <BrandMark inverted />
         <div><strong>FARALUNA</strong><p>Tu brillo, tu esencia, tu historia.</p></div>
       </div>
-      <div><small>EXPLORA</small><Link to="/">Inicio</Link><Link to="/catalogo">Catálogo</Link><a href="/#nosotros">Nuestra historia</a></div>
+      <div><small>EXPLORA</small><Link to="/">Inicio</Link><Link to="/catalogo">Catálogo</Link></div>
       <div><small>HABLEMOS</small><a href="https://wa.me/593996359219">WhatsApp · 099 6359 219</a><Link to="/admin">Acceso administrativo</Link></div>
       <div className="footer-phrase"><span>Brilla</span><strong>a tu manera.</strong></div>
       <p className="copyright">© {new Date().getFullYear()} Faraluna Bisutería. Hecho con amor en Ecuador.</p>

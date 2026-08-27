@@ -108,6 +108,9 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - La nueva iteración volvió a aprobar la compilación del frontend y las 5/5 pruebas del backend; escritorio y móvil se validaron sin imágenes rotas ni desbordamiento horizontal.
 - El commit `aaef9e3` activó el CI/CD `33037287979`; frontend, backend, migraciones de Supabase, publicación de contenedores y despliegues en Cloud Run terminaron correctamente.
 - Se comprobó la versión pública final: se muestran los cuatro iconos vectoriales nuevos y la luna corregida, sin imágenes rotas ni desbordamiento horizontal.
+- Se simplificó la experiencia pública para evitar acciones redundantes: la navegación principal quedó limitada a `Inicio` y `Catálogo`, manteniendo el carrito como acceso al pedido.
+- Se retiraron de la portada la campaña secundaria, la historia, el bloque de promesas y la llamada adicional a WhatsApp; también se dejó un único botón principal `Ver catálogo` y se humanizó el estado de colección vacía.
+- La versión simplificada aprobó la compilación del frontend, las 5/5 pruebas del backend y la revisión responsive sin imágenes rotas ni desbordamiento horizontal.
 
 ## Estado actual
 
