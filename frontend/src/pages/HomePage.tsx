@@ -4,6 +4,7 @@ import { api } from '../lib/api'
 import type { ProductPage } from '../types'
 import { ArrowIcon } from '../components/Icons'
 import { ProductCard } from '../components/ProductCard'
+import { CategoryIcon } from '../components/CategoryIcons'
 
 export function HomePage() {
   const [products, setProducts] = useState<ProductPage | null>(null)
@@ -41,10 +42,10 @@ export function HomePage() {
     <section className="editorial-ribbon" aria-label="Manifiesto Faraluna"><span>PIEZAS ÚNICAS</span><em>para personas</em><span>ÚNICAS</span></section>
 
     <section className="category-strip">
-      <Link to="/catalogo?categoria=cadenas"><span className="category-symbol">⌒</span><div><small>DESCUBRE</small><strong>Cadenas</strong></div></Link>
-      <Link to="/catalogo?categoria=pulseras"><span className="category-symbol">◯</span><div><small>COMBINA</small><strong>Pulseras</strong></div></Link>
-      <Link to="/catalogo?categoria=aretes"><span className="category-symbol">♢</span><div><small>BRILLA</small><strong>Aretes</strong></div></Link>
-      <Link to="/catalogo?categoria=anillos"><span className="category-symbol">◎</span><div><small>CELEBRA</small><strong>Anillos</strong></div></Link>
+      <Link to="/catalogo?categoria=cadenas"><CategoryIcon className="category-icon" type="chain"/><div><small>DESCUBRE</small><strong>Cadenas</strong></div></Link>
+      <Link to="/catalogo?categoria=pulseras"><CategoryIcon className="category-icon" type="bracelet"/><div><small>COMBINA</small><strong>Pulseras</strong></div></Link>
+      <Link to="/catalogo?categoria=aretes"><CategoryIcon className="category-icon" type="earrings"/><div><small>BRILLA</small><strong>Aretes</strong></div></Link>
+      <Link to="/catalogo?categoria=anillos"><CategoryIcon className="category-icon" type="ring"/><div><small>CELEBRA</small><strong>Anillos</strong></div></Link>
     </section>
 
     <section id="favoritas" className="featured section-wrap">

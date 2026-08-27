@@ -102,6 +102,10 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - La validación posterior aprobó la compilación de producción del frontend y las 5/5 pruebas del backend; la revisión visual confirmó escritorio y móvil sin imágenes rotas ni desbordamiento horizontal, además del funcionamiento del menú y el carrito.
 - El commit `3991120` activó el CI/CD `33036165838`; los CI de frontend y backend, las migraciones, la publicación de contenedores, los dos despliegues y los chequeos de salud terminaron correctamente.
 - Se verificó la URL pública después del despliegue: Cloud Run muestra el título `Brilla tu esencia cada día`, la nueva marca lunar y todas las imágenes cargan correctamente.
+- Tras la primera revisión del diseño se redujo y reubicó la luna decorativa del hero para evitar que compita con el logotipo incluido en la fotografía principal.
+- Se sustituyeron los cuatro símbolos tipográficos de categorías por iconos vectoriales propios de cadenas, pulseras, aretes y anillos, con trazos morados y detalles dorados.
+- Se añadieron fondos diferenciados a las categorías y más color a catálogo, detalle de producto, reseñas y cabecera administrativa, conservando la portada aprobada.
+- La nueva iteración volvió a aprobar la compilación del frontend y las 5/5 pruebas del backend; escritorio y móvil se validaron sin imágenes rotas ni desbordamiento horizontal.
 
 ## Estado actual
 
