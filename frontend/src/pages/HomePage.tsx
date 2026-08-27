@@ -15,14 +15,14 @@ export function HomePage() {
   return <>
     <section className="hero">
       <div className="hero-copy">
-        <span className="hero-kicker">✦ NUEVA COLECCIÓN · 2026</span>
-        <h1>Accesorios para sentirte <em>muy tú.</em></h1>
-        <p>Detalles con brillo, color y personalidad para elevar tus looks, celebrar tus momentos y regalar algo especial.</p>
+        <span className="hero-kicker">NUEVA COLECCIÓN · FARALUNA</span>
+        <h1>Brilla tu esencia <em>cada día.</em></h1>
+        <p>Piezas delicadas, juveniles y llenas de personalidad para convertir cada look en una forma de decir quién eres.</p>
         <div className="hero-actions">
-          <Link className="primary-button hero-primary" to="/catalogo">Ver la colección <ArrowIcon /></Link>
-          <a className="hero-link" href="#favoritas">Descubrir favoritas</a>
+          <Link className="primary-button hero-primary" to="/catalogo">Descubrir la colección <ArrowIcon /></Link>
+          <a className="hero-link" href="#nosotros">Conoce Faraluna</a>
         </div>
-        <div className="hero-trust"><span>♡ Diseños para enamorarte</span><span>✦ Stock actualizado</span><span>↗ Pedido fácil por WhatsApp</span></div>
+        <div className="hero-trust"><span>♡ Detalles para enamorarte</span><span>✦ Stock real</span><span>↗ Pedido fácil por WhatsApp</span></div>
       </div>
       <div className="hero-gallery">
         <figure className="hero-card hero-card-main">
@@ -31,11 +31,14 @@ export function HomePage() {
         <figure className="hero-card hero-card-accent">
           <img src="/campaigns/corazones-verdes.png" alt="Conjunto Faraluna de collar y aretes dorados con corazones verdes" />
         </figure>
-        <div className="hero-sticker" aria-hidden="true"><span>♡</span> tu brillo<br/><strong>tu estilo</strong></div>
+        <div className="hero-sticker" aria-hidden="true"><span>☾</span> elegancia que<br/><strong>resalta tu estilo</strong></div>
+        <div className="hero-moon" aria-hidden="true"><i/><span>✦</span></div>
         <span className="hero-spark spark-one" aria-hidden="true">✦</span>
         <span className="hero-spark spark-two" aria-hidden="true">✧</span>
       </div>
     </section>
+
+    <section className="editorial-ribbon" aria-label="Manifiesto Faraluna"><span>PIEZAS ÚNICAS</span><em>para personas</em><span>ÚNICAS</span></section>
 
     <section className="category-strip">
       <Link to="/catalogo?categoria=cadenas"><span className="category-symbol">⌒</span><div><small>DESCUBRE</small><strong>Cadenas</strong></div></Link>
@@ -45,7 +48,7 @@ export function HomePage() {
     </section>
 
     <section id="favoritas" className="featured section-wrap">
-      <div className="section-heading"><div><span className="eyebrow">LAS FAVORITAS</span><h2>Piezas para <em>enamorarte</em></h2></div><Link to="/catalogo">Ver todo <ArrowIcon /></Link></div>
+      <div className="section-heading"><div><span className="eyebrow">DESTELLOS QUE CONECTAN CONTIGO</span><h2>Las favoritas de <em>Faraluna</em></h2></div><Link to="/catalogo">Ver toda la colección <ArrowIcon /></Link></div>
       {!products && <div className="loading-grid">Cargando piezas…</div>}
       {products && products.items.length > 0 && <div className="product-grid">{products.items.map(product => <ProductCard key={product.id} product={product} />)}</div>}
       {products?.items.length === 0 && <div className="catalog-empty"><span>◇</span><h3>La colección está tomando forma</h3><p>Pronto encontrarás aquí nuestras piezas. Si eres administradora, agrega el primer producto desde el panel.</p><Link className="secondary-button" to="/admin">Abrir administración</Link></div>}
@@ -70,15 +73,15 @@ export function HomePage() {
     </section>
 
     <section id="nosotros" className="story-section">
-      <div className="story-art"><span className="story-ring">◇</span><p>hecho<br/><em>con alma</em></p></div>
-      <div className="story-copy"><span className="eyebrow">NUESTRA HISTORIA</span><h2>No vendemos accesorios.<br/><em>Creamos pequeños recuerdos.</em></h2><p>Faraluna Bisutería nace del gusto por los detalles: una pieza que completa un look, celebra una amistad o se convierte en ese regalo que sí dice lo que sentimos.</p><p>Seleccionamos y preparamos cada pedido con el mismo cuidado con el que nos gustaría recibirlo.</p><Link className="text-link" to="/catalogo">Conoce la colección <ArrowIcon /></Link></div>
+      <div className="story-art"><img src="/campaigns/corazones-verdes.png" alt="Conjunto de corazones verdes Faraluna" loading="lazy"/><div className="story-seal"><span>☾</span><strong>hecho<br/>con alma</strong></div></div>
+      <div className="story-copy"><span className="eyebrow">NUESTRA HISTORIA</span><h2>Más que accesorios,<br/><em>pequeños recuerdos.</em></h2><p>Faraluna Bisutería nace del gusto por los detalles: una pieza que completa un look, celebra una amistad o se convierte en ese regalo que sí dice lo que sentimos.</p><p>Seleccionamos cada pieza y preparamos cada pedido con el mismo cuidado con el que nos gustaría recibirlo.</p><Link className="text-link" to="/catalogo">Conoce la colección <ArrowIcon /></Link></div>
     </section>
 
-    <section className="promise-section section-wrap"><div><strong>01</strong><h3>Stock real</h3><p>El catálogo muestra la disponibilidad actual de cada pieza.</p></div><div><strong>02</strong><h3>Compra acompañada</h3><p>Confirmamos tu pedido, entrega y forma de pago por WhatsApp.</p></div><div><strong>03</strong><h3>Tu opinión importa</h3><p>Comparte una reseña y ayuda a otras personas a elegir.</p></div></section>
+    <section className="promise-section section-wrap"><div><strong>01 · ACTUAL</strong><h3>Stock real</h3><p>El catálogo muestra la disponibilidad actual de cada pieza.</p></div><div><strong>02 · CERCANO</strong><h3>Compra acompañada</h3><p>Confirmamos tu pedido, entrega y forma de pago por WhatsApp.</p></div><div><strong>03 · AUTÉNTICO</strong><h3>Tu opinión importa</h3><p>Comparte una reseña y ayuda a otras personas a elegir.</p></div></section>
 
     <section className="contact-feature">
       <img src="/LOGO1.jpeg" alt="Faraluna Bisutería. Contáctanos al 099 6359 219" />
-      <div><span className="eyebrow">ATENCIÓN PERSONALIZADA</span><h2>¿Encontraste una pieza<br/><em>para ti?</em></h2><p>Envíanos tu pedido por WhatsApp. Confirmaremos contigo el stock, la entrega y la forma de pago.</p><a className="primary-button" href="https://wa.me/593996359219">Escribir por WhatsApp <ArrowIcon /></a></div>
+      <div><span className="eyebrow">ATENCIÓN PERSONALIZADA</span><h2>¿Encontraste esa pieza<br/><em>muy tú?</em></h2><p>Arma tu selección y envíanos el pedido por WhatsApp. Confirmaremos contigo el stock, la entrega y la forma de pago.</p><a className="primary-button" href="https://wa.me/593996359219">Conversemos por WhatsApp <ArrowIcon /></a></div>
     </section>
   </>
 }

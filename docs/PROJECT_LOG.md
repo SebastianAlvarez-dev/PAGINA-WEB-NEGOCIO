@@ -92,6 +92,14 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se validaron TypeScript, la compilación de producción, la carga de todas las imágenes y el comportamiento responsive del menú, carrito, portada y catálogo.
 - El commit `1dd5c3d` activó el CI/CD `33014487708`: frontend, backend, migraciones, contenedores, despliegues y chequeos de salud terminaron correctamente.
 - Se verificó la nueva portada directamente en Cloud Run, incluyendo el texto principal y la carga completa de las cuatro imágenes visibles.
+- Se conectó Figma mediante MCP y se analizaron las cuatro interfaces de Quiana Joyería (`Inicio`, `Productos`, `Sobre Quiana` y `Contáctanos`) junto con la interfaz móvil de Lunara Joyería.
+- Se definió una adaptación propia para Faraluna: Quiana como referencia editorial principal, un concepto lunar inspirado en Lunara y contenido, fotografías y funcionalidades originales de Faraluna.
+- Se creó una marca lunar propia mediante CSS, compuesta por una media luna y destellos; no se copiaron logotipos ni recursos gráficos de las plantillas de terceros.
+- Se rediseñaron la navegación, portada, manifiesto editorial, categorías, tarjetas de producto, campaña, historia, contacto, pie de página, catálogo, detalle, reseñas, carrito y panel administrativo.
+- Se incorporaron las tipografías `Italiana`, `Parisienne` y `DM Sans`, con una paleta unificada en morado profundo, crema, rosa y dorado.
+- Se conservaron sin cambios la integración con Supabase, el stock, las reseñas, la carga de imágenes, la autenticación administrativa y el pedido por WhatsApp.
+- Se corrigió la degradación del catálogo cuando la API local no está disponible, evitando un rechazo no controlado durante la carga de categorías.
+- La validación posterior aprobó la compilación de producción del frontend y las 5/5 pruebas del backend; la revisión visual confirmó escritorio y móvil sin imágenes rotas ni desbordamiento horizontal, además del funcionamiento del menú y el carrito.
 
 ## Estado actual
 

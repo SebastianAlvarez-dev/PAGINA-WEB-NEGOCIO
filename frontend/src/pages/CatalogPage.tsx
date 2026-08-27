@@ -12,7 +12,9 @@ export function CatalogPage() {
   const [search, setSearch] = useState(params.get('buscar') ?? '')
   const categorySlug = params.get('categoria') ?? ''
 
-  useEffect(() => { void api<Category[]>('/api/catalog/categories').then(setCategories) }, [])
+  useEffect(() => {
+    void api<Category[]>('/api/catalog/categories').then(setCategories).catch(() => setCategories([]))
+  }, [])
   const categoryId = useMemo(() => categories.find(category => category.slug === categorySlug)?.id, [categories, categorySlug])
 
   useEffect(() => {
@@ -33,7 +35,7 @@ export function CatalogPage() {
   }
 
   return <section className="catalog-page section-wrap">
-    <header className="catalog-header"><span className="eyebrow">ENCUENTRA TU PIEZA</span><h1>Nuestro <em>catálogo</em></h1><p>Explora la colección y arma tu pedido con tus favoritos.</p></header>
+    <header className="catalog-header"><span className="catalog-moon" aria-hidden="true">☾</span><span className="eyebrow">ENCUENTRA TU PIEZA</span><h1>Nuestro <em>catálogo</em></h1><p>Elige, combina y arma una selección tan única como tu estilo.</p></header>
     <div className="catalog-toolbar">
       <div className="category-pills">
         <button className={!categorySlug ? 'active' : ''} onClick={() => selectCategory('')}>Todo</button>
@@ -46,4 +48,3 @@ export function CatalogPage() {
     {products?.items.length === 0 && <div className="catalog-empty"><span>◇</span><h3>No encontramos piezas</h3><p>Prueba con otra categoría o cambia el texto de búsqueda.</p></div>}
   </section>
 }
-
