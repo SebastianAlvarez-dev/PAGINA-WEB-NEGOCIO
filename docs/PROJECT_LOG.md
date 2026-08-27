@@ -100,6 +100,8 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se conservaron sin cambios la integración con Supabase, el stock, las reseñas, la carga de imágenes, la autenticación administrativa y el pedido por WhatsApp.
 - Se corrigió la degradación del catálogo cuando la API local no está disponible, evitando un rechazo no controlado durante la carga de categorías.
 - La validación posterior aprobó la compilación de producción del frontend y las 5/5 pruebas del backend; la revisión visual confirmó escritorio y móvil sin imágenes rotas ni desbordamiento horizontal, además del funcionamiento del menú y el carrito.
+- El commit `3991120` activó el CI/CD `33036165838`; los CI de frontend y backend, las migraciones, la publicación de contenedores, los dos despliegues y los chequeos de salud terminaron correctamente.
+- Se verificó la URL pública después del despliegue: Cloud Run muestra el título `Brilla tu esencia cada día`, la nueva marca lunar y todas las imágenes cargan correctamente.
 
 ## Estado actual
 
