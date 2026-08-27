@@ -106,6 +106,8 @@ Este documento registra las decisiones, entregas y pasos de configuración reali
 - Se sustituyeron los cuatro símbolos tipográficos de categorías por iconos vectoriales propios de cadenas, pulseras, aretes y anillos, con trazos morados y detalles dorados.
 - Se añadieron fondos diferenciados a las categorías y más color a catálogo, detalle de producto, reseñas y cabecera administrativa, conservando la portada aprobada.
 - La nueva iteración volvió a aprobar la compilación del frontend y las 5/5 pruebas del backend; escritorio y móvil se validaron sin imágenes rotas ni desbordamiento horizontal.
+- El commit `aaef9e3` activó el CI/CD `33037287979`; frontend, backend, migraciones de Supabase, publicación de contenedores y despliegues en Cloud Run terminaron correctamente.
+- Se comprobó la versión pública final: se muestran los cuatro iconos vectoriales nuevos y la luna corregida, sin imágenes rotas ni desbordamiento horizontal.
 
 ## Estado actual
 
